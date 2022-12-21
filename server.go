@@ -36,7 +36,13 @@ func main() {
 			json.NewEncoder(w).Encode(ErrorResponse{Error: "request body is not a valid receipt"})
 			return
 		}
-		id, _ := rp.ProcessReceipt(receipt)
+		id, err := rp.ProcessReceipt(receipt)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(ErrorResponse{Error: fmt.Sprintf("receipt processing failed with error: %v", err.Error())})
+			return
+		}
 		w.WriteHeader(http.StatusOK)
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(ProcessResponse{ID: id})
@@ -54,7 +60,7 @@ func main() {
 
 		points, err := rp.GetReceipt(id)
 		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
+			w.WriteHeader(http.StatusNotFound)
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(ErrorResponse{Error: fmt.Sprintf("points for receipt id %s could not be located", id)})
 			return

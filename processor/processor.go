@@ -25,7 +25,7 @@ type Receipt struct {
 	Total        string `json:"total"`
 }
 
-// ReceiptProcessor processes new receipts and stores them in the receipts map
+// ReceiptProcessor processes new receipts and stores the points in the receipts map
 type ReceiptProcessor struct {
 	receipts map[string]int
 }
@@ -52,8 +52,9 @@ func GetAlphanumericLength(s string) int {
 	return len
 }
 
-// ProcessReceipt will accept a Receipt argument, process the receipt, calculate and store the points
-// and return the generated receipt ID - if successful - and an error if ocurred
+// ProcessReceipt will accept a Receipt argument, process the receipt, calculate and store the points.
+// If successful, the generated receipt ID is returned with no error. Else, an empty string and the
+// corresponding error are returned.
 func (rp *ReceiptProcessor) ProcessReceipt(receipt Receipt) (string, error) {
 	points := 0
 	// One point for every alphanumeric character in the retailer name.
@@ -88,7 +89,10 @@ func (rp *ReceiptProcessor) ProcessReceipt(receipt Receipt) (string, error) {
 	}
 
 	// 6 points if the day in the purchase date is odd.
-	date, _ := time.Parse("2006-01-02", receipt.PurchaseDate)
+	date, err := time.Parse("2006-01-02", receipt.PurchaseDate)
+	if err != nil {
+		return "", fmt.Errorf("purchase date %s is not a valid date", receipt.PurchaseDate)
+	}
 	if date.Day()%2 == 1 {
 		points += 6
 	}

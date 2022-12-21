@@ -1,5 +1,3 @@
-github.com/dgryski/trifles v0.0.0-20220929205538-b1e55e64a6e3 h1:Ll4fjBq0EQXK0id0Djs82gtzDitS+uDd9saGzQ49plw=
-github.com/dgryski/trifles v0.0.0-20220929205538-b1e55e64a6e3/go.mod h1:if7Fbed8SFyPtHLHbg49SI7NAdJiC5WIA09pe59rfAA=
 github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
 github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
