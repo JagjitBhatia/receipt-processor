@@ -10,7 +10,7 @@ To run the unit tests
 A dockerfile with go-1.17 on alpine is also provided for convenience.
 
 The commands to build and run the receipt-processor image and container are as follows  
-`$ docker build --tag receipt-processor .`
+`$ docker build --tag receipt-processor .`  
 `$ docker run -d -p 8080:8080 receipt-processor`
 
 
