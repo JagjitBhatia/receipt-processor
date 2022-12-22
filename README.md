@@ -58,7 +58,7 @@ Example Response:
 { "id": "7fb1377b-b223-49d9-a31a-5a02701dd310" }
 ```
 
-## Endpoint: Get Points
+### Endpoint: Get Points
 
 * Path: `/receipts/{id}/points`
 * Method: `GET`
