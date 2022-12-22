@@ -32,6 +32,9 @@ was awarded.
 
 Example Request:
 
+POST `http://localhost:8080/receipts/process`
+
+Request body:
 ```json
 {
   "retailer": "Walmart",
@@ -64,7 +67,7 @@ Example Response:
 A simple Getter endpoint that looks up the receipt by the ID and returns an object specifying the points awarded.
 
 Example Request:
-GET `/receipts/7fb1377b-b223-49d9-a31a-5a02701dd310/points`
+GET `http://localhost:8080/receipts/7fb1377b-b223-49d9-a31a-5a02701dd310/points`
 
 Example Response:
 ```json
